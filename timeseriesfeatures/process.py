@@ -5,6 +5,8 @@ import datetime
 import pandas as pd
 
 from .lag_process import lag_process
+from .non_categorical_numeric_columns import \
+    find_non_categorical_numeric_columns
 from .rolling_process import rolling_process
 
 
@@ -15,7 +17,7 @@ def process(
     on: str | None = None,
 ) -> pd.DataFrame:
     """Process the dataframe for timeseries features."""
-    features = df.columns.values.tolist()
+    features = find_non_categorical_numeric_columns(df)
     if lags is None:
         lags = []
     if windows is None:
