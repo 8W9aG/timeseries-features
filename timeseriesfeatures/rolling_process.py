@@ -30,6 +30,8 @@ def rolling_process(
             if feature["feature_type"] != FEATURE_TYPE_ROLLING:
                 continue
             input_type = feature["value1"]
+            if "value2" not in feature:
+                continue
             input_value = feature["value2"]
             window: int | datetime.timedelta | None = None
             if input_value is not None:

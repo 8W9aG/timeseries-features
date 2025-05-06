@@ -1,6 +1,6 @@
 """The base class for a feature."""
 
-from typing import TypedDict
+from typing import NotRequired, TypedDict
 
 FEATURE_TYPE_LAG = "lag"
 FEATURE_TYPE_ROLLING = "rolling"
@@ -15,4 +15,4 @@ class Feature(TypedDict):
 
     feature_type: str
     value1: str | int | None
-    value2: str | int | None
+    value2: NotRequired[str | int | None]
