@@ -26,9 +26,14 @@ def process(
     if windows is None:
         windows = []
     df = lag_process(df, lags, features)
+    lagged_features = [
+        x for x in df.columns.values.tolist() if x not in original_features
+    ]
     df = rolling_process(df, windows, on, features)
     added_features = [
-        x for x in df.columns.values.tolist() if x not in original_features
+        x
+        for x in df.columns.values.tolist()
+        if x not in original_features and x not in lagged_features
     ]
     df = shift_process(df, features + added_features, shift)
     return df[sorted(df.columns.values.tolist())]
