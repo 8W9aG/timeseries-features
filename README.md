@@ -12,6 +12,7 @@ Python 3.11.6:
 
 - [pandas](https://pandas.pydata.org/)
 - [pyarrow](https://arrow.apache.org/docs/python/index.html)
+- [statsmodels](https://www.statsmodels.org/stable/index.html)
 
 ## Raison D'être :thought_balloon:
 
@@ -58,10 +59,21 @@ import datetime
 
 import pandas as pd
 
+from timeseriesfeatures.process import compute
 from timeseriesfeatures.process import process
+from timeseriesfeatures.feature import Feature, FEATURE_TYPE_LAG, FEATURE_TYPE_ROLLING, VALUE_TYPE_NONE, VALUE_TYPE_DAYS
 
 df = ... # Your timeseries dataframe
-df = process(df, windows=[datetime.timedelta(days=365), None], lags=[1, 2, 4, 8])
+features = compute(df, max_lag=30)
+features.extend([
+    Feature(feature_type=FEATURE_TYPE_LAG, value1=1),
+    Feature(feature_type=FEATURE_TYPE_LAG, value1=2),
+    Feature(feature_type=FEATURE_TYPE_LAG, value1=4),
+    Feature(feature_type=FEATURE_TYPE_LAG, value1=8),
+    Feature(feature_type=FEATURE_TYPE_ROLLING, value1=VALUE_TYPE_NONE, value2=None),
+    Feature(feature_type=FEATURE_TYPE_ROLLING, value1=VALUE_TYPE_DAYS, value2=30),
+])
+df = process(df, features=features)
 ```
 
 This will produce a dataframe that contains the new timeseries related features.

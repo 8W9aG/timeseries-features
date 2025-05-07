@@ -16,4 +16,4 @@ def find_non_categorical_numeric_columns(df: pd.DataFrame) -> list[str]:
     """
     numeric_cols = set(df.select_dtypes(include=np.number).columns.tolist())
     categorical_cols = set(df.select_dtypes(include="category").columns.tolist())
-    return list(numeric_cols.difference(categorical_cols))
+    return sorted(list(numeric_cols.difference(categorical_cols)))

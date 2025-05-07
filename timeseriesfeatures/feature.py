@@ -14,5 +14,6 @@ class Feature(TypedDict):
     """A description of a feature to use."""
 
     feature_type: str
+    columns: list[str]
     value1: str | int | None
     value2: NotRequired[str | int | None]
