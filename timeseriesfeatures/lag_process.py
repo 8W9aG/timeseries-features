@@ -2,8 +2,9 @@
 
 import pandas as pd
 
-from .columns import DELIMITER, LAG_COLUMN
+from .columns import DELIMITER, LAG_COLUMN, TRANSFORM_COLUMN
 from .feature import FEATURE_TYPE_LAG, Feature
+from .transforms import TRANSFORMS
 
 
 def lag_process(
@@ -16,9 +17,13 @@ def lag_process(
         for feature in features:
             if feature["feature_type"] != FEATURE_TYPE_LAG:
                 continue
+            if feature["columns"] and column not in feature["columns"]:
+                continue
             lag = feature["value1"]
             if not isinstance(lag, int):
                 continue
-            new_column = DELIMITER.join([column, LAG_COLUMN, str(lag)])
-            df[new_column] = df[column].shift(lag)
+            new_column = DELIMITER.join(
+                [column, TRANSFORM_COLUMN, feature["transform"], LAG_COLUMN, str(lag)]
+            )
+            df[new_column] = TRANSFORMS[feature["transform"]](df[column]).shift(lag)
     return df

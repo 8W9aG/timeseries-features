@@ -11,9 +11,10 @@ from .columns import (ALL_SUFFIX, COUNT_WINDOW_FUNCTION, DAYS_COLUMN_SUFFIX,
                       MIN_WINDOW_FUNCTION, RANK_WINDOW_FUNCTION,
                       SEM_WINDOW_FUNCTION, SKEW_WINDOW_FUNCTION,
                       STD_WINDOW_FUNCTION, SUM_WINDOW_FUNCTION,
-                      VAR_WINDOW_FUNCTION, WINDOW_FUNCTIONS)
+                      TRANSFORM_COLUMN, VAR_WINDOW_FUNCTION, WINDOW_FUNCTIONS)
 from .feature import (FEATURE_TYPE_ROLLING, VALUE_TYPE_DAYS, VALUE_TYPE_INT,
                       Feature)
+from .transforms import TRANSFORMS
 
 
 def rolling_process(
@@ -29,6 +30,8 @@ def rolling_process(
         for feature in features:
             if feature["feature_type"] != FEATURE_TYPE_ROLLING:
                 continue
+            if feature["columns"] and column not in feature["columns"]:
+                continue
             input_type = feature["value1"]
             if "value2" not in feature:
                 continue
@@ -40,7 +43,9 @@ def rolling_process(
                 elif input_type == VALUE_TYPE_DAYS:
                     window = datetime.timedelta(days=int(input_value))
             window_df = (
-                df.rolling(window, on=on) if window is not None else df.expanding()
+                TRANSFORMS[feature["transform"]](df).rolling(window, on=on)
+                if window is not None
+                else TRANSFORMS[feature["transform"]](df).expanding()
             )
             window_col = ALL_SUFFIX
             if isinstance(window, int):
@@ -48,7 +53,15 @@ def rolling_process(
             elif isinstance(window, datetime.timedelta):
                 window_col = str(window.days) + DAYS_COLUMN_SUFFIX
             for window_func in WINDOW_FUNCTIONS:
-                new_column = DELIMITER.join([column, window_func, window_col])
+                new_column = DELIMITER.join(
+                    [
+                        column,
+                        TRANSFORM_COLUMN,
+                        feature["transform"],
+                        window_func,
+                        window_col,
+                    ]
+                )
                 if window_func == COUNT_WINDOW_FUNCTION:
                     df[new_column] = window_df[column].count()
                 elif window_func == SUM_WINDOW_FUNCTION:

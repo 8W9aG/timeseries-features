@@ -7,6 +7,7 @@ import pandas as pd
 
 from timeseriesfeatures.compute import compute
 from timeseriesfeatures.feature import Feature, FEATURE_TYPE_LAG, VALUE_TYPE_INT
+from timeseriesfeatures.transform import Transform
 
 
 class TestCompute(unittest.TestCase):
@@ -24,13 +25,13 @@ class TestCompute(unittest.TestCase):
         ])
         features = compute(df, 30)
         expected_features = [
-            Feature(feature_type=FEATURE_TYPE_LAG, columns=["feature1"], value1=VALUE_TYPE_INT, value2=1),
-            Feature(feature_type=FEATURE_TYPE_LAG, columns=["feature1"], value1=VALUE_TYPE_INT, value2=2),
-            Feature(feature_type=FEATURE_TYPE_LAG, columns=["feature1"], value1=VALUE_TYPE_INT, value2=3),
-            Feature(feature_type=FEATURE_TYPE_LAG, columns=["feature1"], value1=VALUE_TYPE_INT, value2=4),
-            Feature(feature_type=FEATURE_TYPE_LAG, columns=["feature2"], value1=VALUE_TYPE_INT, value2=1),
-            Feature(feature_type=FEATURE_TYPE_LAG, columns=["feature2"], value1=VALUE_TYPE_INT, value2=2),
-            Feature(feature_type=FEATURE_TYPE_LAG, columns=["feature2"], value1=VALUE_TYPE_INT, value2=3),
-            Feature(feature_type=FEATURE_TYPE_LAG, columns=["feature2"], value1=VALUE_TYPE_INT, value2=4),
+            Feature(feature_type=FEATURE_TYPE_LAG, columns=["feature1"], value1=VALUE_TYPE_INT, value2=1, transform=str(Transform.NONE)),
+            Feature(feature_type=FEATURE_TYPE_LAG, columns=["feature1"], value1=VALUE_TYPE_INT, value2=2, transform=str(Transform.NONE)),
+            Feature(feature_type=FEATURE_TYPE_LAG, columns=["feature1"], value1=VALUE_TYPE_INT, value2=3, transform=str(Transform.NONE)),
+            Feature(feature_type=FEATURE_TYPE_LAG, columns=["feature1"], value1=VALUE_TYPE_INT, value2=4, transform=str(Transform.NONE)),
+            Feature(feature_type=FEATURE_TYPE_LAG, columns=["feature2"], value1=VALUE_TYPE_INT, value2=1, transform=str(Transform.NONE)),
+            Feature(feature_type=FEATURE_TYPE_LAG, columns=["feature2"], value1=VALUE_TYPE_INT, value2=2, transform=str(Transform.NONE)),
+            Feature(feature_type=FEATURE_TYPE_LAG, columns=["feature2"], value1=VALUE_TYPE_INT, value2=3, transform=str(Transform.NONE)),
+            Feature(feature_type=FEATURE_TYPE_LAG, columns=["feature2"], value1=VALUE_TYPE_INT, value2=4, transform=str(Transform.NONE)),
         ]
         self.assertListEqual(features, expected_features)

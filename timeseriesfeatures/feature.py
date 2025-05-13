@@ -17,3 +17,4 @@ class Feature(TypedDict):
     columns: list[str]
     value1: str | int | None
     value2: NotRequired[str | int | None]
+    transform: str

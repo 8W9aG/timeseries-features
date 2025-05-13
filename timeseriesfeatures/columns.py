@@ -2,6 +2,7 @@
 
 DELIMITER = "_"
 LAG_COLUMN = "lag"
+TRANSFORM_COLUMN = "transform"
 DAYS_COLUMN_SUFFIX = "days"
 ALL_SUFFIX = "all"
 COUNT_WINDOW_FUNCTION = "count"
