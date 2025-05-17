@@ -8,3 +8,4 @@ class Transform(StrEnum):
 
     NONE = auto()
     VELOCITY = auto()
+    LOG = auto()

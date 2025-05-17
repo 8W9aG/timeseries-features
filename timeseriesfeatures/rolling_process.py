@@ -43,9 +43,9 @@ def rolling_process(
                 elif input_type == VALUE_TYPE_DAYS:
                     window = datetime.timedelta(days=int(input_value))
             window_df = (
-                TRANSFORMS[feature["transform"]](df).rolling(window, on=on)
+                TRANSFORMS[feature["transform"]](df[column]).rolling(window, on=on)
                 if window is not None
-                else TRANSFORMS[feature["transform"]](df).expanding()
+                else TRANSFORMS[feature["transform"]](df[column]).expanding()
             )
             window_col = ALL_SUFFIX
             if isinstance(window, int):
@@ -63,29 +63,29 @@ def rolling_process(
                     ]
                 )
                 if window_func == COUNT_WINDOW_FUNCTION:
-                    df[new_column] = window_df[column].count()
+                    df[new_column] = window_df.count()
                 elif window_func == SUM_WINDOW_FUNCTION:
-                    df[new_column] = window_df[column].sum()
+                    df[new_column] = window_df.sum()
                 elif window_func == MEAN_WINDOW_FUNCTION:
-                    df[new_column] = window_df[column].mean()
+                    df[new_column] = window_df.mean()
                 elif window_func == MEDIAN_WINDOW_FUNCTION:
-                    df[new_column] = window_df[column].median()
+                    df[new_column] = window_df.median()
                 elif window_func == VAR_WINDOW_FUNCTION:
-                    df[new_column] = window_df[column].var()
+                    df[new_column] = window_df.var()
                 elif window_func == STD_WINDOW_FUNCTION:
-                    df[new_column] = window_df[column].std()
+                    df[new_column] = window_df.std()
                 elif window_func == MIN_WINDOW_FUNCTION:
-                    df[new_column] = window_df[column].min()
+                    df[new_column] = window_df.min()
                 elif window_func == MAX_WINDOW_FUNCTION:
-                    df[new_column] = window_df[column].max()
+                    df[new_column] = window_df.max()
                 elif window_func == SKEW_WINDOW_FUNCTION:
-                    df[new_column] = window_df[column].skew()
+                    df[new_column] = window_df.skew()
                 elif window_func == KURT_WINDOW_FUNCTION:
-                    df[new_column] = window_df[column].kurt()
+                    df[new_column] = window_df.kurt()
                 elif window_func == SEM_WINDOW_FUNCTION:
-                    df[new_column] = window_df[column].sem()
+                    df[new_column] = window_df.sem()
                 elif window_func == RANK_WINDOW_FUNCTION:
-                    df[new_column] = window_df[column].rank()
+                    df[new_column] = window_df.rank()
                 else:
                     raise ValueError(f"Unrecognised window function: {window_func}")
     return df
