@@ -18,3 +18,4 @@ class Feature(TypedDict):
     value1: str | int | None
     value2: NotRequired[str | int | None]
     transform: str
+    rank_value: NotRequired[float]
