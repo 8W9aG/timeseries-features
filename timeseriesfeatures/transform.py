@@ -10,3 +10,4 @@ class Transform(StrEnum):
     VELOCITY = auto()
     LOG = auto()
     ACCELERATION = auto()
+    JERK = auto()
