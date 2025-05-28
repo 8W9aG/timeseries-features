@@ -11,3 +11,4 @@ class Transform(StrEnum):
     LOG = auto()
     ACCELERATION = auto()
     JERK = auto()
+    SNAP = auto()
