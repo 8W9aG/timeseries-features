@@ -12,3 +12,4 @@ class Transform(StrEnum):
     ACCELERATION = auto()
     JERK = auto()
     SNAP = auto()
+    SMA_5 = auto()
