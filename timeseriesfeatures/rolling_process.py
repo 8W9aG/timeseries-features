@@ -1,6 +1,6 @@
 """Calculate rolling features."""
 
-# pylint: disable=too-many-branches
+# pylint: disable=too-many-branches,too-many-statements
 import datetime
 
 import pandas as pd
@@ -42,11 +42,14 @@ def rolling_process(
                     window = int(input_value)
                 elif input_type == VALUE_TYPE_DAYS:
                     window = datetime.timedelta(days=int(input_value))
+            window_df = df[[column] + [] if on is None else [on]].copy()
+            window_df[column] = TRANSFORMS[feature["transform"]](df[column])
             window_df = (
-                TRANSFORMS[feature["transform"]](df[column]).rolling(window, on=on)
+                window_df.rolling(window, on=on)  # type: ignore
                 if window is not None
-                else TRANSFORMS[feature["transform"]](df[column]).expanding()
+                else window_df.expanding()
             )
+            window_df = window_df[column]  # type: ignore
             window_col = ALL_SUFFIX
             if isinstance(window, int):
                 window_col = str(window)
