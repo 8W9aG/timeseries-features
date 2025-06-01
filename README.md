@@ -13,6 +13,14 @@ Python 3.11.6:
 - [pandas](https://pandas.pydata.org/)
 - [pyarrow](https://arrow.apache.org/docs/python/index.html)
 - [statsmodels](https://www.statsmodels.org/stable/index.html)
+- [numpy](https://numpy.org/)
+- [sktime](https://www.sktime.net/en/stable/)
+- [pytorch-forecasting](https://pytorch-forecasting.readthedocs.io/en/stable/)
+- [mlflow](https://mlflow.org/)
+- [litmodels](https://github.com/Lightning-AI/LitModels)
+- [dill](https://dill.readthedocs.io/en/latest/)
+- [cloudpickle](https://github.com/cloudpipe/cloudpickle)
+- [torch](https://pytorch.org/)
 
 ## Raison D'être :thought_balloon:
 
@@ -20,7 +28,13 @@ Python 3.11.6:
 
 ## Architecture :triangular_ruler:
 
-`timeseries-features` is a functional library, meaning that each phase of feature extraction gets put through a different function until the final output. It contains some caching when the processing is heavy (such as skill processing). The features its computes are as follows:
+`timeseries-features` is a functional library, meaning that each phase of feature extraction gets put through a different function until the final output. It contains a feature extractor for auto-features, such as:
+
+1. Autocorrelation
+2. Partial Autocorrelation
+3. NBEATS Predictions
+
+And a feature processor for the following features:
 
 1. Lags
 2. Rolling Count
@@ -35,6 +49,7 @@ Python 3.11.6:
 11. Rolling Kurtosis
 12. Rolling Standard Error of the Mean
 13. Rolling Rank
+14. NBEATS Forecast
 
 ## Installation :inbox_tray:
 

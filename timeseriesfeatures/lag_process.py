@@ -10,7 +10,7 @@ from .transforms import TRANSFORMS
 def lag_process(
     df: pd.DataFrame, features: list[Feature], columns: list[str]
 ) -> pd.DataFrame:
-    """Process margins between teams."""
+    """Process lags."""
     if not features:
         return df
     for column in columns:

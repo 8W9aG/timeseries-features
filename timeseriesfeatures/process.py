@@ -6,6 +6,7 @@ from .feature import Feature
 from .lag_process import lag_process
 from .non_categorical_numeric_columns import \
     find_non_categorical_numeric_columns
+from .process_nbeats import process_nbeats
 from .rolling_process import rolling_process
 from .shift_process import shift_process
 
@@ -24,6 +25,7 @@ def process(
         x for x in df.columns.values.tolist() if x not in original_columns
     ]
     df = rolling_process(df, features, on, valid_columns)
+    df = process_nbeats(df, features, valid_columns)
     added_features = [
         x
         for x in df.columns.values.tolist()

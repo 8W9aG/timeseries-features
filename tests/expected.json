@@ -1,0 +1,102 @@
+[
+    {
+        "feature_type": "lag",
+        "columns":
+        [
+            "feature1"
+        ],
+        "value1": "int",
+        "value2": 15,
+        "transform": "none"
+    },
+    {
+        "feature_type": "lag",
+        "columns":
+        [
+            "feature1"
+        ],
+        "value1": "int",
+        "value2": 16,
+        "transform": "none"
+    },
+    {
+        "feature_type": "lag",
+        "columns":
+        [
+            "feature1"
+        ],
+        "value1": "int",
+        "value2": 17,
+        "transform": "none"
+    },
+    {
+        "feature_type": "lag",
+        "columns":
+        [
+            "feature1"
+        ],
+        "value1": "int",
+        "value2": 18,
+        "transform": "none"
+    },
+    {
+        "feature_type": "nbeats",
+        "columns":
+        [
+            "feature1"
+        ],
+        "value1": "nbeats_feature1_30_14",
+        "value2": 14,
+        "transform": "none"
+    },
+    {
+        "feature_type": "lag",
+        "columns":
+        [
+            "feature2"
+        ],
+        "value1": "int",
+        "value2": 15,
+        "transform": "none"
+    },
+    {
+        "feature_type": "lag",
+        "columns":
+        [
+            "feature2"
+        ],
+        "value1": "int",
+        "value2": 16,
+        "transform": "none"
+    },
+    {
+        "feature_type": "lag",
+        "columns":
+        [
+            "feature2"
+        ],
+        "value1": "int",
+        "value2": 17,
+        "transform": "none"
+    },
+    {
+        "feature_type": "lag",
+        "columns":
+        [
+            "feature2"
+        ],
+        "value1": "int",
+        "value2": 18,
+        "transform": "none"
+    },
+    {
+        "feature_type": "nbeats",
+        "columns":
+        [
+            "feature2"
+        ],
+        "value1": "nbeats_feature2_30_14",
+        "value2": 14,
+        "transform": "none"
+    }
+]

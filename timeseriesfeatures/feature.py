@@ -4,6 +4,7 @@ from typing import NotRequired, TypedDict
 
 FEATURE_TYPE_LAG = "lag"
 FEATURE_TYPE_ROLLING = "rolling"
+FEATURE_TYPE_NBEATS = "nbeats"
 
 VALUE_TYPE_INT = "int"
 VALUE_TYPE_DAYS = "days"
