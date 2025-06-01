@@ -1,3 +1,3 @@
 """The timeseriesfeatures main module."""
 
-__VERSION__ = "0.0.16"
+__VERSION__ = "0.0.17"

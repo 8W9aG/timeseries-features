@@ -13,4 +13,5 @@ TRANSFORMS = {
     str(Transform.JERK): create_derivative_transform(3),
     str(Transform.SNAP): create_derivative_transform(4),
     str(Transform.SMA_5): create_sma_transform(5),
+    str(Transform.CRACKLE): create_derivative_transform(5),
 }

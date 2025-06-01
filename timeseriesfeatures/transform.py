@@ -13,3 +13,4 @@ class Transform(StrEnum):
     JERK = auto()
     SNAP = auto()
     SMA_5 = auto()
+    CRACKLE = auto()
