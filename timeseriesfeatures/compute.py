@@ -3,6 +3,7 @@
 import pandas as pd
 
 from .compute_acf import compute_acf
+from .compute_arima import compute_arima
 from .compute_nbeats import compute_nbeats
 from .compute_pacf import compute_pacf
 from .feature import Feature
@@ -20,6 +21,6 @@ def compute(
     columns = find_non_categorical_numeric_columns(df)
     for column in columns:
         series = df[column]
-        for compute_func in [compute_acf, compute_pacf, compute_nbeats]:
+        for compute_func in [compute_acf, compute_pacf, compute_nbeats, compute_arima]:
             features.extend(compute_func(series, max_lag, min_lag))
     return features

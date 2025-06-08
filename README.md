@@ -21,6 +21,7 @@ Python 3.11.6:
 - [dill](https://dill.readthedocs.io/en/latest/)
 - [cloudpickle](https://github.com/cloudpipe/cloudpickle)
 - [torch](https://pytorch.org/)
+- [pmdarima](https://alkaline-ml.com/pmdarima/)
 
 ## Raison D'être :thought_balloon:
 
@@ -33,6 +34,18 @@ Python 3.11.6:
 1. Autocorrelation
 2. Partial Autocorrelation
 3. NBEATS Predictions
+4. ARIMA Predictions
+
+To determine the auto-features it can use the following transforms:
+
+1. No-Op
+2. Velocity
+3. Log
+4. Acceleration
+5. Jerk
+6. Snap
+7. SMA 5
+8. Crackle
 
 And a feature processor for the following features:
 
@@ -50,6 +63,7 @@ And a feature processor for the following features:
 12. Rolling Standard Error of the Mean
 13. Rolling Rank
 14. NBEATS Forecast
+15. ARIMA Forecast
 
 ## Installation :inbox_tray:
 

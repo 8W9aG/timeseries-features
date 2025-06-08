@@ -50,6 +50,16 @@
         "transform": "none"
     },
     {
+        "feature_type": "arima",
+        "columns":
+        [
+            "feature1"
+        ],
+        "value1": "arima_feature1_30_14",
+        "value2": 14,
+        "transform": "none"
+    },
+    {
         "feature_type": "lag",
         "columns":
         [
@@ -96,6 +106,16 @@
             "feature2"
         ],
         "value1": "nbeats_feature2_30_14",
+        "value2": 14,
+        "transform": "none"
+    },
+    {
+        "feature_type": "arima",
+        "columns":
+        [
+            "feature2"
+        ],
+        "value1": "arima_feature2_30_14",
         "value2": 14,
         "transform": "none"
     }

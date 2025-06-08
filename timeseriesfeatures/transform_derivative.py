@@ -8,7 +8,7 @@ import pandas as pd
 
 def derivative_transform(series: pd.Series) -> pd.Series:
     """Transforms a series by derivative."""
-    return series.pct_change(fill_method=None)
+    return series.pct_change(fill_method=None)  # type: ignore
 
 
 def create_derivative_transform(derivative: int) -> Callable[[pd.Series], pd.Series]:
